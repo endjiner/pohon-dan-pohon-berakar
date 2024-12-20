@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Pohon Berakar</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><pattern id="batik" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M25 0 L0 25 L25 50 L50 25 Z" fill="rgba(44, 62, 128, 0.05)"/></pattern><rect width="100%" height="100%" fill="url(%23batik)"/></svg>');
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 50px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .nav-brand {
+        color: #2c3e80;
+        font-weight: 900;
+        font-size: 2em;
+        margin-right: 50px;
+        letter-spacing: -1px;
+      }
+      .nav-menu {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+      }
+      .nav-link {
+        color: #2c3e80;
+        text-decoration: none;
+        position: relative;
+        padding: 10px 15px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background-color: #f0f8ff;
+      }
+      .nav-link:hover {
+        background-color: #e6f2ff;
+        color: #1a5f7a;
+        transform: scale(1.05);
+      }
+      .nav-link.active {
+        background-color: #2c3e80;
+        color: white;
+      }
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        width: 400px; /* Lebar dropdown */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        z-index: 1000;
+        padding: 10px; /* Ruang dalam dropdown */
+      }
+      .nav-link .dropdown.show {
+        display: flex; /* Menggunakan flexbox */
+        flex-wrap: wrap; /* Bungkus ke baris baru */
+        gap: 10px; /* Jarak antar elemen */
+      }
+      .dropdown a {
+        flex: 1 1 calc(50% - 10px); /* Dua kolom dengan jarak 10px */
+        box-sizing: border-box; /* Agar padding tidak mempengaruhi ukuran */
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #2c3e80;
+        background-color: #f0f8ff;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+      .dropdown a:hover {
+        color: #1a5f7a;
+        background-color: #9bcbfd;
+        transform: translateX(10px);
+      }
+
+
+        /* Main Section */
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+ 
+        .container-mini {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #2c3e80;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #2c3e80;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #1a4d6a;
+        }
+
+        canvas {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            background-color: #fafafa;
+            border-radius: 8px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border: 1px solid #2c3e80;
+            border-radius: 5px;
+        }
+        /* Footer */
+        .footer {
+            background-color: #2c3e80;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+   <!-- Navbar -->
+   <nav class="navbar">
+    <div class="nav-brand">Pohon dan Pohon Berakar</div>
+    <div class="nav-menu">
+      <a href="/index.html" class="nav-link active">Beranda</a>
+
+      <div class="nav-link nav-dropdown">
+        Video Pembelajaran
+        <div class="dropdown">
+          <a href="/materi/pohon.html">Pohon</a>
+          <a href="/materi/hutan.html">Hutan</a>
+          <a href="/materi/pohon berakar.html">Pohon Berakar</a>
+
+          <a href="/materi/anak dan orang tua.html">Anak Dan Orang Tua</a>
+          <a href="/materi/lintasan.html">Lintasan</a>
+          <a href="/materi/keturunan dan leluhur.html"
+            >Keturunan dan Leluhur</a
+          >
+          <a href="/materi/saudara kandung.html">Saudara Kandung</a>
+          <a href="/materi/sub pohon.html">Subpohon</a>
+          <a href="/materi/derajat.html">Derajat</a>
+          <a href="/materi/daun.html">Daun</a>
+          <a href="/materi/simpul dalam.html">Simpul Dalam</a>
+          <a href="/materi/aras atau tingkat.html">Aras/Tingkat</a>
+          <a href="/materi/tinggi dan kedalaman.html">Tinggi/Kedalaman</a>
+        </div>
+      </div>
+
+      <!-- Tambahan Menu Baru -->
+      <a href="/quiz/Evaluasi.html" class="nav-link">Evaluasi</a>
+      <a href="/kalkulator/kalkulator.html" class="nav-link">Kalkulator</a>
+    </div>
+  </nav>
+
+<!-- Main Content -->
+<main class="content">
+    <h1 style="text-align: center;">Kalkulator Pohon Berakar</h1>
+    <div class="container">
+        <label for="edges">Masukkan pasangan cabang (contoh: A-B,A-C,B-D):</label><br>
+        <input type="text" id="edges" placeholder="Format: A-B,A-C,B-D" />
+        <br>
+        <label for="root">Masukkan akar pohon:</label><br>
+        <input type="text" id="root" placeholder="Contoh: A" />
+        <br>
+        <button onclick="drawTree()">Gambar Pohon</button>
+        <canvas id="treeCanvas" width="800" height="570"></canvas>
+    </div>
+    <div class="mini-calc">
+        <div class="container-mini">
+            <h2>Temukan Orangtua</h2>
+            <label for="node_parent">Masukkan simpul anak:</label><br>
+            <input type="text" id="node_parent" placeholder="Contoh: E" />
+            <br>
+            <button onclick="findParent()">Cari Orangtua</button>
+            <div id="output6" class="result"></div>
+        </div>
+        <div class="container-mini">
+            <h2>Temukan Anak dari Simpul</h2>
+            <label for="node">Masukkan simpul orangtua:</label><br>
+            <input type="text" id="node" placeholder="Contoh: B" />
+            <br>
+            <button onclick="findChildren()">Cari Anak</button>
+            <div id="output" class="result"></div>
+        </div>
+        <div class="container-mini">
+            <h2>Temukan Panjang lintasan dari sebuah Pohon</h2>
+            <label for="node">Masukkan simpul Mulai:</label><br>
+            <input type="text" id="node_start" placeholder="Contoh: B" /><br>
+            <label for="node2">Masukkan simpul Akhir:</label><br>
+            <input type="text" id="node_end" placeholder="Contoh: B" />
+            <br>
+            <button onclick="findPath()">Cari Lintasan</button>
+            <div id="output5" class="result"></div>
+        </div>
+        <div class="container-mini">
+            <h2>Temukan Keturunan</h2>
+            <label for="node_descendants">Masukkan simpul:</label><br>
+            <input type="text" id="node_descendants" placeholder="Contoh: B" />
+            <br>
+            <button onclick="findDescendants()">Cari Keturunan</button>
+            <div id="output7" class="result"></div>
+        </div>
+        <div class="container-mini">
+            <h2>Temukan Saudara Kandung dari Simpul</h2>
+            <label for="node">Masukkan simpul :</label><br>
+            <input type="text" id="node2" placeholder="Contoh: B" />
+            <br>
+            <button onclick="findSiblings()">Cari Saudara Kandung</button>
+            <div id="output2" class="result"></div>
+        </div>
+        <div class="container-mini">
+            <h2>Temukan Derajat dari Simpul</h2>
+            <label for="node">Masukkan simpul :</label><br>
+            <input type="text" id="node3" placeholder="Contoh: B" />
+            <br>
+            <button onclick="findDegree()">Cari Derajat</button>
+            <div id="output3" class="result"></div>
+        </div>
+
+        
+    
+
+    
+        <div class="container-mini">
+            <h2>Tentukan Tingkat/Level</h2>
+            <label for="node_level">Masukkan simpul:</label><br>
+            <input type="text" id="node_level" placeholder="Contoh: E" />
+            <br>
+            <button onclick="findLevel()">Cari Tingkat</button>
+            <div id="output8" class="result"></div>
+        </div>
+    
+        <div class="container-mini">
+            <button onclick="findLeaves()">Cek Daun</button>
+            <button onclick="findInternalNodes()">Cek Simpul Dalam</button>
+            <button onclick="findMaxHeight()">Cek Tinggi Maks</button>
+            <div id="output9" class="result"></div>
+        </div>
+    </div>
+    </div>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer"> 
+    Kelompok 9 Matematika Diskrit 1 TRPL B<br>
+    Anggota:<br>
+    Aura Aulia Putrina Ashari (1062437)<br>
+    Maudy Apriliyani (1062446)<br>
+    Nasywatun Fadhilah (1062452)
+</footer>
+
+
+    <script>
+         let tree = {}; // Tree global variable
+        //  let nodePositions = {};
+        function drawTree() {
+            const edgesInput = document.getElementById("edges").value;
+            const root = document.getElementById("root").value;
+            const canvas = document.getElementById("treeCanvas");
+            const ctx = canvas.getContext("2d");
+
+            // Reset canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            tree = {};
+
+            if (!edgesInput || !root) {
+                alert("Harap masukkan pasangan cabang dan akar pohon.");
+                return;
+            }
+
+            // Parse input menjadi tree
+            const edges = edgesInput.split(',').map(pair => pair.trim().split('-'));
+            edges.forEach(([parent, child]) => {
+                if (!tree[parent]) tree[parent] = [];
+                tree[parent].push(child);
+            });
+
+            if (!tree[root]) {
+                alert(`Akar '${root}' tidak ditemukan dalam simpul yang diberikan.`);
+                return;
+            }
+
+            // Variabel posisi
+            const nodePositions = {};
+            const canvasWidth = canvas.width;
+            const canvasHeight = canvas.height;
+
+            // Fungsi rekursif untuk menggambar node secara hierarkis
+            function assignPositions(node, x, y, levelWidth) {
+                nodePositions[node] = { x, y };
+
+                const children = tree[node] || [];
+                const childCount = children.length;
+
+                let nextX = x - (childCount - 1) * (levelWidth / 2);
+                const nextY = y + 100; // Jarak vertikal antar level
+
+                children.forEach(child => {
+                    assignPositions(child, nextX, nextY, levelWidth / childCount);
+                    nextX += levelWidth;
+                });
+            }
+
+            function drawLine(from, to) {
+                ctx.beginPath();
+                ctx.moveTo(from.x, from.y);
+                ctx.lineTo(to.x, to.y);
+                ctx.strokeStyle = "#888";
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+
+            function drawNode(node, position) {
+                ctx.beginPath();
+                ctx.arc(position.x, position.y, 20, 0, Math.PI * 2, true);
+                ctx.fillStyle = "lightblue";
+                ctx.fill();
+                ctx.strokeStyle = "#2c3e80";
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                ctx.fillStyle = "#000";
+                ctx.font = "14px Arial";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(node, position.x, position.y);
+            }
+
+            // Mulai menggambar
+            assignPositions(root, canvasWidth / 2, 50, canvasWidth / 3);
+
+            for (const parent in tree) {
+                tree[parent].forEach(child => {
+                    drawLine(nodePositions[parent], nodePositions[child]);
+                });
+            }
+
+            for (const node in nodePositions) {
+                drawNode(node, nodePositions[node]);
+            }
+        }
+
+        function findChildren() {
+            const node = document.getElementById("node").value.trim();
+            const output = document.getElementById("output");
+            const children = tree[node] || [];
+            output.innerHTML = children.length
+                ? `<p><strong>${node}</strong> adalah orangtua dari: <strong>${children.join(', ')}</strong></p>`
+                : `<p><strong>${node}</strong> tidak memiliki anak atau tidak ada di pohon.</p>`;
+        }
+
+        function findSiblings() {
+            const node = document.getElementById("node2").value.trim();
+            const output = document.getElementById("output2");
+            for (const parent in tree) {
+                const children = tree[parent];
+                if (children.includes(node)) {
+                    const siblings = children.filter(child => child !== node);
+                    output.innerHTML = siblings.length
+                        ? `<p>Saudara kandung dari <strong>${node}</strong>: <strong>${siblings.join(', ')}</strong></p>`
+                        : `<p><strong>${node}</strong> tidak memiliki saudara kandung.</p>`;
+                    return;
+                }
+            }
+            output.innerText = `${node} tidak ditemukan.`;
+        }
+
+        function findDegree() {
+            const node = document.getElementById("node3").value.trim();
+            const output = document.getElementById("output3");
+            const degree = tree[node] ? tree[node].length : 0;
+            output.innerHTML = `<p>Derajat dari simpul <strong>${node}</strong>: <strong>${degree}</strong></p>`;
+        }
+
+
+        function findPath() {
+            const start = document.getElementById("node_start").value.trim();
+            const end = document.getElementById("node_end").value.trim();
+            const path = [];
+            let found = false;
+            let distance = 0;
+
+            function dfs(node,currentDistance) {
+                if (node === end) {
+                    found = true;
+                    distance = currentDistance;
+                    return;
+                };
+                (tree[node] || []).forEach(child => {
+                    if (!found) {
+                        path.push(child);
+                        dfs(child,currentDistance + 1);
+                        if (!found) path.pop();
+                    }
+                });
+            }
+
+            path.push(start);
+            dfs(start,0);
+            document.getElementById("output5").innerHTML = found 
+                ? `<p>Lintasan: ${path.join(' → ')}</p> <br> <p>Panjang Lintasan : <strong>${distance}</strong></p>` 
+                : "Lintasan tidak ditemukan.";
+        }
+
+        function findParent() {
+    const node = document.getElementById("node_parent").value.trim();
+    const output = document.getElementById("output6");
+    for (const parent in tree) {
+        if (tree[parent].includes(node)) {
+            output.innerHTML = `<p>Orangtua dari <strong>${node}</strong> adalah <strong>${parent}</strong></p>`;
+            return;
+        }
+    }
+    output.innerHTML = `<p><strong>${node}</strong> tidak memiliki orangtua atau tidak ada dalam pohon.</p>`;
+}
+
+function findDescendants() {
+    const node = document.getElementById("node_descendants").value.trim();
+    const output = document.getElementById("output7");
+    const descendants = [];
+
+    function traverse(current) {
+        (tree[current] || []).forEach(child => {
+            descendants.push(child);
+            traverse(child);
+        });
+    }
+    traverse(node);
+    output.innerHTML = descendants.length ? `<p>Keturunan dari <strong>${node}</strong>: ${descendants.join(', ')}</p>` :
+        `<p><strong>${node}</strong> tidak memiliki keturunan.</p>`;
+}
+
+function findLevel() {
+    const node = document.getElementById("node_level").value.trim();
+    const output = document.getElementById("output8");
+    let level = -1;
+
+    function dfs(current, currentLevel) {
+        if (current === node) {
+            level = currentLevel;
+            return;
+        }
+        (tree[current] || []).forEach(child => dfs(child, currentLevel + 1));
+    }
+
+    dfs(Object.keys(tree)[0], 0);
+    output.innerHTML = level !== -1 ? `<p>Tingkat dari <strong>${node}</strong>: <strong>${level}</strong></p>` :
+        `<p><strong>${node}</strong> tidak ditemukan.</p>`;
+}
+
+    function findLeaves() {
+        const childrenSet = new Set();
+    const parentsSet = new Set(Object.keys(tree));
+
+    // Kumpulkan semua child node dari setiap parent
+    for (const parent in tree) {
+        tree[parent].forEach(child => {
+            childrenSet.add(child);
+        });
+    }
+
+    // Simpul daun = Child nodes yang tidak menjadi parent
+    const leaves = [...childrenSet].filter(node => !parentsSet.has(node));
+            document.getElementById("output9").innerHTML = `Simpul daun: ${leaves.join(', ')}`;
+        }
+
+function findInternalNodes() {
+    const internalNodes = [];
+    const root = Object.keys(tree)[0]; // Akar adalah kunci pertama dalam objek tree
+    
+    for (const node in tree) {
+        if (node !== root && tree[node].length > 0) {
+            internalNodes.push(node);
+        }
+    }
+    document.getElementById("output9").innerHTML = `<p>Simpul Dalam: ${internalNodes.join(', ')}</p>`;
+}
+
+function findMaxHeight() {
+    let maxHeight = 0;
+    function dfs(node, height) {
+        maxHeight = Math.max(maxHeight, height);
+        (tree[node] || []).forEach(child => dfs(child, height + 1));
+    }
+    dfs(Object.keys(tree)[0], 0);
+    document.getElementById("output9").innerHTML = `<p>Tinggi Maksimal Pohon: <strong>${maxHeight}</strong></p>`;
+}
+
+
+        
+    </script>
+    <script>
+        document
+          .querySelector(".nav-dropdown")
+          .addEventListener("click", function (e) {
+            // Toggle the dropdown menu
+            this.querySelector(".dropdown")?.classList.toggle("show");
+          });
+      </script>
+    
+</body>
+</html>
