@@ -62,17 +62,17 @@
         .nav-dropdown {
             position: relative;
         }
-        .dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: white;
-            min-width: 200px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            z-index: 20;
-        }
+        .dropdown a {
+        flex: 1 1 calc(50% - 10px); /* Dua kolom dengan jarak 10px */
+        box-sizing: border-box; /* Agar padding tidak mempengaruhi ukuran */
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #2c3e80;
+        background-color: #f0f8ff;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
         .nav-dropdown:hover .dropdown {
             display: block;
         }
@@ -210,5 +210,13 @@
             video.play();
         }
     </script>
+    <script>
+        document
+          .querySelector(".nav-dropdown")
+          .addEventListener("click", function (e) {
+            // Toggle the dropdown menu
+            this.querySelector(".dropdown")?.classList.toggle("show");
+          });
+      </script>
 </body>
 </html>
