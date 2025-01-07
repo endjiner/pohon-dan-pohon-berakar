@@ -19,84 +19,78 @@
          /* Navbar */
          .navbar {
             position: relative;
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 15px 50px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        z-index: 10;
-      }
-      .nav-brand {
-        color: #2c3e80;
-        font-weight: 900;
-        font-size: 2em;
-        margin-right: 50px;
-        letter-spacing: -1px;
-      }
-      .nav-menu {
-        display: flex;
-        gap: 30px;
-        align-items: center;
-      }
-      .nav-link {
-        color: #2c3e80;
-        text-decoration: none;
-        position: relative;
-        padding: 10px 15px;
-        border-radius: 20px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        background-color: #f0f8ff;
-      }
-      .nav-link:hover {
-        background-color: #e6f2ff;
-        color: #1a5f7a;
-        transform: scale(1.05);
-      }
-      .nav-link.active {
-        background-color: #2c3e80;
-        color: white;
-      }
-      .dropdown {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: white;
-        width: 400px; /* Lebar dropdown */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        z-index: 20;
-        padding: 10px; /* Ruang dalam dropdown */
-      }
-      .nav-link .dropdown.show {
-        display: flex; /* Menggunakan flexbox */
-        flex-wrap: wrap; /* Bungkus ke baris baru */
-        gap: 10px; /* Jarak antar elemen */
-      }
-      .dropdown a {
-        flex: 1 1 calc(50% - 10px); /* Dua kolom dengan jarak 10px */
-        box-sizing: border-box; /* Agar padding tidak mempengaruhi ukuran */
-        display: block;
-        padding: 10px 15px;
-        text-decoration: none;
-        color: #2c3e80;
-        background-color: #f0f8ff;
-        border-radius: 5px;
-        transition: all 0.3s ease;
-      }
-      .dropdown a:hover {
-        color: #1a5f7a;
-        background-color: #9bcbfd;
-        transform: translateX(10px);
-      }
-
-      /* Sub-dropdown positioning */
-      .nav-link .dropdown .nav-link {
-        position: relative;
-      }
-
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 50px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        .nav-brand {
+            color: #2c3e80;
+            font-weight: 900;
+            font-size: 2em;
+            margin-right: 50px;
+            letter-spacing: -1px;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .nav-link {
+            color: #2c3e80;
+            text-decoration: none;
+            position: relative;
+            padding: 10px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background-color: #f0f8ff;
+        }
+        .nav-link:hover {
+            background-color: #e6f2ff;
+            color: #1a5f7a;
+            transform: scale(1.05);
+        }
+        .nav-link.active {
+            background-color: #2c3e80;
+            color: white;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 20;
+            padding: 10px;
+        }
+        .nav-link .dropdown.show {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .dropdown a {
+            flex: 1 1 calc(50% - 10px);
+            box-sizing: border-box;
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #2c3e80;
+            background-color: #f0f8ff;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .dropdown a:hover {
+            color: #1a5f7a;
+            background-color: #9bcbfd;
+            transform: translateX(10px);
+        }
 
         /* Main Section */
         .content {
@@ -117,30 +111,14 @@
         }
         .video-container {
             position: relative;
-        }
-        video {
             width: 100%;
+            aspect-ratio: 16/9;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
             border-radius: 8px;
-            outline: none;
-        }
-
-        .timestamps {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .timestamp {
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #f0f8ff;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .timestamp:hover {
-            background-color: #e6f2ff;
-            color: #1a5f7a;
-            transform: scale(1.05);
         }
 
         /* Footer */
@@ -166,12 +144,9 @@
                 <a href="pohon.html">Pohon</a>
                 <a href="hutan.html">Hutan</a>
                 <a href="pohon berakar.html">Pohon Berakar</a>
-    
                 <a href="anak dan orang tua.html">Anak Dan Orang Tua</a>
                 <a href="lintasan.html">Lintasan</a>
-                <a href="keturunan dan leluhur.html"
-                  >Keturunan dan Leluhur</a
-                >
+                <a href="keturunan dan leluhur.html">Keturunan dan Leluhur</a>
                 <a href="saudara kandung.html">Saudara Kandung</a>
                 <a href="sub pohon.html">Subpohon</a>
                 <a href="derajat.html">Derajat</a>
@@ -192,10 +167,7 @@
     <div class="content">
         <div class="video-section">
             <div class="video-container">
-                <video id="materiVideo" controls>
-                    <source src="../video/definisi pohon.mp4" type="video/mp4">
-                    Maaf, browser Anda tidak mendukung pemutar video.
-                </video>
+                <iframe src="https://www.youtube.com/embed/aeRiCmwUYSM?si=We2yqeLpLi9J_TV4" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -210,13 +182,6 @@
     </footer>
 
     <!-- JavaScript -->
-    <script>
-        function jumpTo(seconds) {
-            const video = document.getElementById('materiVideo');
-            video.currentTime = seconds;
-            video.play();
-        }
-    </script>
     <script>
         document
           .querySelector(".nav-dropdown")
