@@ -29,8 +29,8 @@
       .nav-brand {
         color: #2c3e80;
         font-weight: 900;
-        font-size: 2em;
-        margin-right: 50px;
+        font-size: 2.5em;
+        margin-right: 490px;
         letter-spacing: -1px;
       }
       .nav-menu {
@@ -166,6 +166,7 @@
 
       .topic-cards {
         display: flex;
+        flex-wrap: wrap;
         gap: 15px;
         margin: 20px 0;
         justify-content: center;
@@ -182,7 +183,13 @@
 
       .topic-card:hover {
         transform: scale(1.05);
-        background: #1a5f7a;
+        background: #399611;
+      }
+
+      .topic-card.active {
+        background: #399611;
+        box-shadow: 0 0 10px #399611;
+        transform: scale(1.05);
       }
 
       .dropdown-container {
@@ -202,6 +209,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        font-size: 20px;
       }
 
       .dropdown-content {
@@ -222,6 +230,9 @@
         padding: 15px;
         background: #f0f8ff;
         border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
       }
 
       /* Footer */
@@ -232,34 +243,88 @@
         padding: 15px;
         width: 100%;
       }
+
+      .answer-container {
+        margin: 15px 0;
+      }
+
+      .answer-input {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .answer-field {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      .check-button {
+        background: #2c3e80;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .check-button:hover {
+        background: #1a5f7a;
+      }
+
+      .explanation {
+        margin-top: 15px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 5px;
+      }
+
+      .explanation-image {
+        max-width: 100%;
+        margin-top: 10px;
+        border-radius: 5px;
+      }
+
+      .result-text {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .soal-image {
+        max-width: 50%;
+        height: auto;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .materi-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .green{
+        color: #1dee0a;
+      
+      }
+      .blue{
+        color: #1a46e6;
+
+      }
     </style>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar">
-      <div class="nav-brand">Pohon dan Pohon Berakar</div>
+      <div class="nav-brand"><span class="green">Po</span><span class="blue">Kar</span></div>
       <div class="nav-menu">
-        <a href="/index.html" class="nav-link active">Beranda</a>
+        <a href="../index.html" class="nav-link ">Beranda</a>
 
-        <div class="nav-link nav-dropdown">
-          Video Pembelajaran
-          <div class="dropdown">
-            <a href="pohon.html">Pohon</a>
-            <a href="hutan.html">Hutan</a>
-            <a href="pohon berakar.html">Pohon Berakar</a>
-
-            <a href="anak dan orang tua.html">Anak Dan Orang Tua</a>
-            <a href="lintasan.html">Lintasan</a>
-            <a href="keturunan dan leluhur.html">Keturunan dan Leluhur</a>
-            <a href="saudara kandung.html">Saudara Kandung</a>
-            <a href="sub pohon.html">Subpohon</a>
-            <a href="derajat.html">Derajat</a>
-            <a href="daun.html">Daun</a>
-            <a href="simpul dalam.html">Simpul Dalam</a>
-            <a href="aras atau tingkat.html">Aras/Tingkat</a>
-            <a href="tinggi dan kedalaman.html">Tinggi/Kedalaman</a>
-          </div>
-        </div>
+        <a href="video.html" class="nav-link active">Materi</a>
 
         <!-- Tambahan Menu Baru -->
         <a href="../quiz/Evaluasi.html" class="nav-link">Evaluasi</a>
@@ -275,36 +340,121 @@
             id="youtubePlayer"
             width="100%"
             height="400"
-            src="https://www.youtube.com/embed/6xsbxjVVwW0?si=ENfnMEN6rk5XYndK?enablejsapi=1"
+            src="https://www.youtube.com/embed/akp8890QGFo?enablejsapi=1"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
           ></iframe>
         </div>
         <div class="timestamp-container">
-          <h3>Time Stamp</h3>
-          <div class="timestamp-item" onclick="seekTo(0)">
-            Definisi dan Syarat Pohon
+          <h3 style="text-align: center;">Pohon Berakar</h3>
+          <div class="timestamp-item" onclick="seekTo(4)">
+            Pohon Berakar
           </div>
-          <div class="timestamp-item" onclick="seekTo(60)">
-            Karakteristik Pohon
+          <div class="timestamp-item" onclick="seekTo(75)">
+            Anak & Orang Tua
           </div>
-          <div class="timestamp-item" onclick="seekTo(120)">Jenis Pohon</div>
           <div class="timestamp-item" onclick="seekTo(180)">
-            Jenis Titik Pohon
+            Lintasan
           </div>
-          <div class="timestamp-item" onclick="seekTo(240)">Hutan</div>
+          <div class="timestamp-item" onclick="seekTo(430)">
+            Keturunan & Leluhur
+          </div>
+          <div class="timestamp-item" onclick="seekTo(529)">
+            Saudara Kandung
+          </div>
+          <div class="timestamp-item" onclick="seekTo(630)">
+            Subpohon
+          </div>
+          <div class="timestamp-item" onclick="seekTo(726)">
+            Derajat
+          </div>
+          <div class="timestamp-item" onclick="seekTo(784)">
+            Daun
+          </div>
+          <div class="timestamp-item" onclick="seekTo(889)">
+            Simpul Dalam
+          </div>
+          <div class="timestamp-item" onclick="seekTo(1013)">
+            Aras/Tingkat
+          </div>
+          <div class="timestamp-item" onclick="seekTo(1079)">
+            Tinggi/Kedalaman 
+          </div>
         </div>
       </div>
 
       <div class="topic-cards">
-        <div class="topic-card" onclick="showContent('pohonBerakar')">
+        <div
+          class="topic-card"
+          onclick="showContent('pohonBerakar')"
+          data-topic="pohonBerakar"
+        >
           Pohon Berakar
         </div>
-        <div class="topic-card" onclick="showContent('anakOrangTua')">
-          Anak dgn Orang Tua
+        <div
+          class="topic-card"
+          onclick="showContent('anakOrangTua')"
+          data-topic="anakOrangTua"
+        >
+          Anak & Orang Tua
         </div>
-        <div class="topic-card" onclick="showContent('lintasan')">Lintasan</div>
+        <div
+          class="topic-card"
+          onclick="showContent('lintasan')"
+          data-topic="lintasan"
+        >
+          Lintasan
+        </div>
+        <div
+          class="topic-card"
+          onclick="showContent('keturunanLeluhur')"
+          data-topic="keturunanLeluhur"
+        >
+          Keturunan & Leluhur
+        </div>
+        <div
+          class="topic-card"
+          onclick="showContent('saudaraKandung')"
+          data-topic="saudaraKandung"
+        >
+          Saudara Kandung
+        </div>
+        <div
+          class="topic-card"
+          onclick="showContent('subPohon')"
+          data-topic="subPohon"
+        >
+          Sub Pohon
+        </div>
+        <div
+          class="topic-card"
+          onclick="showContent('derajat')"
+          data-topic="derajat"
+        >
+          Derajat
+        </div>
+        <div class="topic-card" onclick="showContent('daun')" data-topic="daun">
+          Daun
+        </div>
+        <div
+          class="topic-card"
+          onclick="showContent('simpulDalam')"
+          data-topic="simpulDalam"
+        >
+          Simpul Dalam
+        </div>
+        <div class="topic-card" onclick="showContent('aras')" data-topic="aras">
+          Aras/Tingkat
+        </div>
+        <div
+          class="topic-card"
+          onclick="showContent('tinggi')"
+          data-topic="tinggi"
+        >
+          Tinggi/Kedalaman
+        </div>
+
       </div>
 
       <div
@@ -341,37 +491,472 @@
 
     <!-- JavaScript -->
     <script>
+      let player;
+    
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('youtubePlayer', {
+          events: {
+            'onReady': onPlayerReady,
+          }
+        });
+      }
+    
+      function onPlayerReady(event) {
+        console.log('YouTube player is ready');
+      }
+    
+      function seekTo(seconds) {
+        if (player && typeof player.seekTo === 'function') {
+          player.seekTo(seconds, true);
+        } else {
+          console.error('Player not ready or seekTo not available');
+        }
+      }
+    </script>
+    
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
       const materiContent = {
-        pohonBerakar: "Materi tentang Pohon Berakar...",
-        anakOrangTua: "Materi tentang Anak dan Orang Tua...",
-        lintasan: "Materi tentang Lintasan...",
+        pohonBerakar: `
+            <div class="materi-item">
+                <h3 style="text-align: center;">Pohon Berakar</h3>
+                <p class="materi-explanation">
+                   Pohon yang satu buah simpulnya diperlakukan sebagai akar dan sisi-sisinya diberi arah sehingga menjadi graf berarah dinamakan pohon berakar (rooted tree).
+                </p>
+                <img src="../gambar/pb1.png" alt="Pohon Berakar1" class="materi-image">
+                <img src="../gambar/pb2.png" alt="Pohon Berakar2" class="materi-image">
+            </div>
+        `,
+        anakOrangTua: `
+            <div class="materi-item">
+                <h3 style="text-align: center;">Anak dan Orang Tua</h3>
+                <img src="../gambar/adano.png" alt="Anak dan Orang Tua" class="materi-image">
+                <div class="point-penting">
+                  Pada pohon berakar di atas, kita memiliki:
+                    <ul>
+                        <li>simpul b, c, dan d adalah anak-anak (children) dari a, masing-masing dari b,
+                         c, dan d adalah anak (child) dari a;</li>
+                        <li>simpul a adalah orangtua (parent) dari b, c, maupun d;</li>
+                    </ul>
+                </div>
+            </div>
+        `,
+        lintasan: `
+            <div class="materi-item">
+                <h3 style="text-align: center;">Lintasan</h3>
+                <p class="materi-explanation">
+                    Lintasan (path) merujuk pada urutan simpul yang terhubung satu sama lain oleh tepi (edges) dalam pohon. Lintasan ini menggambarkan perjalanan atau perjalanan dari satu simpul ke simpul lainnya.
+                </p>
+            </div>
+        `,
+        keturunanLeluhur: `
+<div class="materi-item">
+    <h3 style="text-align: center;">Keturunan dan Leluhur</h3>
+    <h4 style="text-align: center;">Keturunan (Descendant)</h4>
+    <div class="point-penting">
+        <ul>
+            <li>Keturunan dari suatu simpul adalah simpul-simpul yang dapat dicapai dengan mengikuti jalur dari simpul tersebut ke bawah menuju simpul daun.</li>
+            <li>Dengan kata lain, simpul A adalah keturunan dari simpul B jika terdapat lintasan dari B menuju A, dan A berada di bawah B dalam struktur pohon.</li>
+            <li>Contoh: Jika simpul B memiliki anak C dan C memiliki anak D, maka D adalah keturunan dari B dan C.</li>
+        </ul>
+    </div>
+    <h4 style="text-align: center;">Leluhur (Ancestor)</h4>
+    <div class="point-penting">
+        <ul>
+            <li>Leluhur dari suatu simpul adalah simpul-simpul yang dapat dicapai dengan mengikuti jalur dari simpul tersebut ke atas menuju akar pohon.</li>
+            <li>Dengan kata lain, simpul A adalah leluhur dari simpul B jika terdapat lintasan dari A menuju B, dan A berada di atas B dalam struktur pohon.</li>
+            <li>Contoh: Jika simpul B memiliki induk A, maka A adalah leluhur dari B.</li>
+        </ul>
+    </div>
+</div>
+        `,
+        saudaraKandung: `
+<div class="materi-item">
+    <h3 style="text-align: center;">Saudara Kandung</h3>
+    <p class="materi-explanation">
+        Saudara kandung adalah simpul yang berada pada tingkat yang sama dalam pohon dan memiliki induk yang sama. Artinya, dua simpul yang memiliki induk yang sama disebut sebagai saudara kandung.
+    </p>
+    <img src="../gambar/sk1.png" alt="Pohon Berakar2" class="materi-image">
+</div>
+        `,
+        subPohon: `
+    <h3 style="text-align: center;">Sub Pohon</h3>
+    <p class="materi-explanation">
+        Sub pohon adalah bagian dari pohon yang terdiri dari simpul tertentu beserta semua keturunannya.
+    </p>
+    <img src="../gambar/sp1.png" alt="Pohon Berakar2" class="materi-image">
+        `,
+        derajat: `
+    <h3 style="text-align: center;">Derajat</h3>
+    <p class="materi-explanation">
+        Derajat dari suatu simpul adalah jumlah anak yang dimiliki oleh simpul tersebut. Dalam pohon, derajat simpul dapat dihitung dengan menghitung jumlah anak langsung yang dimiliki oleh simpul tersebut.
+    </p>
+    <img src="../gambar/derajat1.png" alt="Pohon Berakar2" class="materi-image">
+        `,
+        daun: `
+<div class="materi-item">
+    <h3 style="text-align: center;">Daun</h3>
+    <p class="materi-explanation">
+        Daun adalah simpul yang tidak memiliki anak, yaitu simpul yang terletak di ujung pohon. Daun adalah simpul yang tidak memiliki keturunan lebih lanjut.
+    </p>
+    <img src="../gambar/pb2.png" alt="daun1" class="materi-image">
+        <p class="materi-explanation">
+       Simpul h, i, j, f, c, l, dan m adalah daun.
+    </p>
+</div>
+        `,
+        simpulDalam: `
+<div class="materi-item">
+    <h3 style="text-align: center;">Simpul Dalam</h3>
+    <p class="materi-explanation">
+        Simpul dalam adalah simpul yang memiliki setidaknya satu anak, tetapi tidak terletak di ujung pohon. Simpul dalam berada di antara akar dan daun dalam pohon, dan sering bertindak sebagai penghubung untuk mencapai daun.
+    </p>
+        <img src="../gambar/pb2.png" alt="simpuldalam1" class="materi-image">
+           <p class="materi-explanation">
+       Simpul b, d, e, g, dan k adalah simpul dalam
+    </p>
+</div>
+        `,
+        aras: `
+<div class="materi-item">
+    <h3 style="text-align: center;">Aras</h3>
+    <p class="materi-explanation">
+        Aras atau level dari suatu simpul adalah jumlah tepi (edges) yang harus dilalui untuk mencapai simpul tersebut dari akar pohon. Akar pohon berada pada level 0, simpul-simpul anak akar berada pada level 1, dan seterusnya.
+    </p>
+       <img src="../gambar/aras1.png" alt="simpuldalam1" class="materi-image">
+</div>
+        `,
+        tinggi: `
+<div class="materi-item">
+    <h3 style="text-align: center;">Tinggi</h3>
+    <p class="materi-explanation">
+        Tinggi pohon adalah panjang lintasan terpanjang dari akar ke daun (dihitung dalam jumlah tepi), atau dengan kata lain, jumlah level terbesar dalam pohon. Tinggi pohon mengukur seberapa dalam pohon tersebut.
+    </p>
+       <img src="../gambar/tinggi1.png" alt="simpuldalam1" class="materi-image">
+    <p class="materi-explanation">
+        Aras maksimum dari suatu pohon disebut tinggi atau kedalaman pohon tersebut. Pohon di atas mempunyai tinggi 4.
+    </p>
+</div>
+        `,
+
       };
 
       const soalContent = {
         pohonBerakar: [
-          "Soal 1: Jelaskan definisi pohon berakar?",
-          "Soal 2: Apa perbedaan pohon berakar dengan pohon biasa?",
-          "Soal 3: Sebutkan contoh pohon berakar dalam kehidupan sehari-hari",
-          "Soal 4: Bagaimana cara menentukan akar dari sebuah pohon?",
-          "Soal 5: Jelaskan karakteristik pohon berakar!",
+          {
+            soal: "Simpul mana yang merupakan akar?",
+            gambarSoal: "../gambar/soal_pb1.png",
+            jawaban: ["A"],
+            penjelasan: {
+              text: "Akar adalah simpul pertama dalam pohon yang tidak memiliki induk",
+            },
+          },
+          {
+            soal: "Simpul mana yang merupakan akar?",
+               gambarSoal: "../gambar/soal_pb2.png",
+            jawaban: ["C"],
+            penjelasan: {
+              text: "Akar adalah simpul pertama dalam pohon yang tidak memiliki induk.",
+            },
+          },
+          {
+            soal: "Simpul mana yang merupakan akar?",
+               gambarSoal: "../gambar/soal_pb3.png",
+            jawaban: ["1"],
+            penjelasan: {
+              text: "Akar adalah simpul pertama dalam pohon yang tidak memiliki induk.",
+            },
+          },
         ],
         anakOrangTua: [
-          "Soal 1: Apa yang dimaksud dengan hubungan anak dan orang tua dalam pohon?",
-          "Soal 2: Bagaimana menentukan anak dari suatu simpul?",
-          "Soal 3: Jelaskan konsep orang tua dalam pohon berakar",
-          "Soal 4: Berapa maksimal anak yang bisa dimiliki suatu simpul?",
-          "Soal 5: Apa perbedaan anak kiri dan anak kanan?",
+          {
+            soal: "Dari gambar tersebut, simpul manakah yang merupakan anak?",
+            gambarSoal: "../gambar/soal_adona1.png",
+            jawaban: ["B", "D", "C"],
+            penjelasan: {
+              text: "simpul b, c, dan d adalah anak-anak (children) dari a, masing-masing dari b, c, dan d adalah anak (child) dari a.",
+            },
+          },
+          {
+            soal: "Dari gambar tersebut, simpul manakah yang merupakan orang tua?",
+            gambarSoal: "../gambar/soal_adona2.png",
+            jawaban: ["A"],
+            penjelasan: {
+              text: "Simpul a adalah orangtua (parent) dari b, c, maupun d.",
+            },
+          },
+          {
+            soal: "Dari gambar tersebut, sebutkan anak-anak dari simpul e?",
+            gambarSoal: "../gambar/soal_adona3.png",
+            jawaban: ["H", "I", "J"],
+            penjelasan: {
+              text: "Anak (child) adalah simpul yang memiliki hubungan langsung dengan simpul induk (parent) melalui sebuah tepi.",
+            },
+          },
         ],
         lintasan: [
-          "Soal 1: Apa yang dimaksud dengan lintasan dalam pohon?",
-          "Soal 2: Bagaimana cara menghitung panjang lintasan?",
-          "Soal 3: Jelaskan konsep lintasan terpendek",
-          "Soal 4: Apa hubungan lintasan dengan tinggi pohon?",
-          "Soal 5: Berikan contoh penerapan lintasan dalam kehidupan sehari-hari",
+          {
+            soal: "Tenetukan lintasan simpul a ke f?",
+            gambarSoal: "../gambar/soal_lintasan1.png",
+            jawaban: ["A", "B", "F"],
+            penjelasan: {
+              text: "Lintasan dari a ke f hanya ada satu (tunggal), yaitu a, b, f dengan panjang 2.",
+            },
+          },
+          {
+            soal: "Tentukan lintasan dari simpul a ke j?",
+            gambarSoal: "../gambar/soal_lintasan2.png",
+            jawaban: ["A", "B", "E", "J"],
+            penjelasan: {
+              text: "Lintasan dari a ke j hanya ada satu (tunggal), yaitu a; b; e; j dengan panjang 3.",
+            },
+          },
+          {
+            soal: "Tentukan panjang lintasan g ke c?",
+            gambarSoal: "../gambar/soal_lintasan3.png",
+            jawaban: ["4"],
+            penjelasan: {
+              text: "Lintasan dari g ke c memiliki panjang 4, yaitu g-d-a-c.",
+            },
+          },
+        ],
+        keturunanLeluhur: [
+          {
+            soal: "Dari pohon yang diberikan, siapakah leluhur dari simpul 9?",
+            gambarSoal: "../gambar/soal_keturunan1.png",
+            jawaban: ["1", "2", "5", "6"],
+            penjelasan: {
+              text: "Leluhur dari simpul 9 adalah semua simpul yang terhubung ke simpul 9 menuju ke akar pohon.",
+            },
+          },
+          {
+            soal: "Sebutkan semua keturunan dari simpul 5?",
+            gambarSoal: "../gambar/soal_keturunan1.png",
+            jawaban: ["6", "7", "8", "9", "10"],
+            penjelasan: {
+              text: "Keturunan simpul 5 adalah semua simpul yang berada di bawahnya dalam pohon.",
+            },
+          },
+          {
+            soal: "Sebutkan semua leluhur dan keturunan dari simpul 7?",
+            gambarSoal: "../gambar/soal_keturunan1.png",
+            jawaban: ["1", "2", "5"],
+            penjelasan: {
+              text: "Leluhur dari simpul 7 adalah semua simpul yang berada di jalur dari simpul tersebut ke akar pohon.",
+            },
+          },
+        ],
+        saudaraKandung: [
+          {
+            soal: "Manakah yang merupakan saudara kandung dari 6?",
+            gambarSoal: "../gambar/soal_keturunan1.png",
+            jawaban: ["8", "10"],
+            penjelasan: {
+              text: "8 dan 10  adalah saudara kandung (sibling) dari 9, dan sebaliknya, karena 8, 10, dan 9 memiliki orangtua yang sama, yaitu 6.",
+            },
+          },
+          {
+            soal: "Apakah 2 merupakan saudara kandung dari 1?",
+            gambarSoal: "../gambar/soal_keturunan1.png",
+            jawaban: ["bukan"],
+            penjelasan: {
+              text: "2 bukan saudara kandung dari 1 (dan sebaliknya), karena orangtua mereka berbeda.",
+            },
+          },
+          {
+            soal: "Manakah yang merupakan saudara kandung dari 6?",
+            gambarSoal: "../gambar/soal_keturunan1.png",
+            jawaban: ["7"],
+            penjelasan: {
+              text: "6 adalah saudara kandung (sibling) dari 7, dan sebaliknya, karena 6 dan 7 memiliki orangtua yang sama, yaitu 5.",
+            },
+          },
+        ],
+        subPohon: [
+          {
+            soal: "Dari gambar pohon tersebut, tentukan subpohon dengan akar di simpul A2. Sebutkan semua simpul yang termasuk dalam subpohon tersebut?",
+            gambarSoal: "../gambar/soal_sp1.png",
+            jawaban: ["A2", "A3", "A4", "A5", "A6"],
+            penjelasan: {
+              text: "Sub Pohon dengan akar di simpul A2 adalah bagian dari pohon yang dimulai dari simpul A2 sebagai akar, termasuk semua simpul yang berada di bawahnya.",
+            },
+          },
+          {
+            soal: "Dari pohon yang diberikan, sebutkan salah satu sub pohon yang memiliki akar di simpul A3. Berapa jumlah simpul pada sub pohon tersebut?",
+            gambarSoal: "../gambar/soal_sp1.png",
+            jawaban: ["4"],
+            penjelasan: {
+              text: "Simpul dalam subpohon tersebut adalah: A3, A4, A5, dan A6.",
+            },
+          },
+          {
+            soal: "Jika simpul A2 dijadikan akar, simpul apa saja yang termasuk dalam sub pohon tersebut?",
+            gambarSoal: "../gambar/soal_sp1.png",
+            jawaban: [
+              "sub pohon dengan akar A2 mencakup simpul A2,A3,A4,A5,dan A6.",
+            ],
+            penjelasan: {
+              text: "Sub pohon adalah bagian dari pohon utama yang dimulai dari simpul tertentu (sebagai akar) dan mencakup semua turunannya. Dalam hal ini, jika A2 adalah akar, maka turunannya adalah A3, A4, A5, dan A6.",
+            },
+          },
+        ],
+        derajat: [
+          {
+            soal: "Tentukan derajat pada simpul 4?",
+            gambarSoal: "../gambar/soal_derajat1.png",
+            jawaban: ["2"],
+            penjelasan: {
+              text: "Derajat merupakan jumlah anak pada simpul tersebut sehingga simpul 4 memiliki 2 anak/derajat.",
+            },
+          },
+          {
+            soal: "Tentukan derajat pada simpul 2?",
+            gambarSoal: "../gambar/soal_derajat1.png",
+            jawaban: ["3"],
+            penjelasan: {
+              text: "Derajat merupakan jumlah anak pada simpul tersebut sehingga simpul 2 memiliki 3 anak/derajat.",
+            },
+          },
+          {
+            soal: "Tentukan derajat pada simpul 3?",
+            gambarSoal: "../gambar/soal_derajat1.png",
+            jawaban: ["0"],
+            penjelasan: {
+              text: "Derajat merupakan jumlah anak pada simpul tersebut sehingga simpul 3 tidak anak atau derajatnya 0.",
+            },
+          },
+        ],
+        daun: [
+          {
+            soal: "Sebutkan semua simpul daun pada pohon tersebut?",
+            gambarSoal: "../gambar/soal_daun1.png",
+            jawaban: ["G", "H", "F", "A", "C"],
+            penjelasan: {
+              text: "Simpul daun adalah simpul yang tidak memiliki anak. Pada pohon ini, simpul g, h, f, a, dan c tidak memiliki anak, sehingga mereka adalah simpul daun.",
+            },
+          },
+          {
+            soal: "-	Berapa jumlah simpul daun pada pohon di atas?",
+            gambarSoal: "../gambar/soal_daun1.png",
+            jawaban: ["5"],
+            penjelasan: {
+              text: "Dari soal pertama, kita mengetahui bahwa simpul daun adalah g, h, f, a, dan c. Karena ada 5 simpul tersebut, maka jumlah simpul daun adalah 5.",
+            },
+          },
+          {
+            soal: "Jika simpul b dijadikan akar sub pohon, berapa jumlah daun dalam sub pohon tersebut?",
+            gambarSoal: "../gambar/soal_daun1.png",
+            jawaban: ["2"],
+            penjelasan: {
+              text: "Sub pohon dengan akar di b mencakup simpul b dan turunannya, yaitu a dan c. Karena a dan c tidak memiliki anak, mereka adalah simpul daun. Total simpul daun dalam sub pohon ini adalah 2.",
+            },
+          },
+        ],
+        simpulDalam: [
+          {
+            soal: "Sebutkan semua simpul dalam pada pohon di atas?",
+            gambarSoal: "../gambar/soal_daun1.png",
+            jawaban: ["E", "D", "B"],
+            penjelasan: {
+              text: "Simpul dalam adalah simpul yang memiliki setidaknya satu anak. Pada pohon ini yaitu e memiliki anak d dan f, d memiliki anak g dan h, b memiliki anak a dan c.",
+            },
+          },
+          {
+            soal: "Berapa jumlah simpul dalam pada pohon tersebut?",
+            gambarSoal: "../gambar/soal_daun1.png",
+            jawaban: ["3"],
+            penjelasan: {
+              text: "Simpul e, d dan b adalah simpul dalam sehingga jumlah simpul dalam adalah 3.",
+            },
+          },
+          {
+            soal: "simpul dalam pada sub pohon d ,g ,h ,b ,a ,c adalah?",
+            gambarSoal: "../gambar/soal_daun1.png",
+            jawaban: ["B"],
+            penjelasan: {
+              text: "Sub pohon dengan akar d mencakup simpul d, g dan h. Dari simpul tersebut, hanya d yang memiliki anak (g dan h). Oleh karena itu, simpul dalam pada sub pohon ini adalah d saja.",
+            },
+          },
+        ],
+        aras: [
+          {
+            soal: "Pada aras berapa simpul 9 berada?",
+            gambarSoal: "../gambar/soal_keturunan1.png",
+            jawaban: ["4"],
+            penjelasan: {
+              text: "Pohon diatas memiliki 4  tingkat, dimana simpul 9 berada pada aras 4.",
+            },
+          },
+          {
+            soal: "Berapa aras dari simpul 5?",
+            gambarSoal: "../gambar/soal_keturunan1.png",
+            jawaban: ["1"],
+            penjelasan: {
+              text: "Pohon diatas memiliki 4 tingkat, dimana simpul 5 berada pada aras 1.",
+            },
+          },
+          {
+            soal: "Berapa aras dari simpul 9?",
+            gambarSoal: "../gambar/soal_keturunan1.png",
+            jawaban: ["4"],
+            penjelasan: {
+              text: "Pohon diatas memiliki 4 tingkat, dimana simpul 5 berada pada aras 4.",
+            },
+          },
+        ],
+        tinggi: [
+          {
+            soal: "Berapa ketinggian dari pohon tersebut?",
+            gambarSoal: "../gambar/soal_keturunan1.png",
+            jawaban: ["4"],
+            penjelasan: {
+              text: "Pohon diatas memiliki 4 tingkat yang dimulai dari 0.",
+            },
+          },
+          {
+            soal: "Berapa ketinggian dari pohon tersebut?",
+            gambarSoal: "../gambar/soal_daun1.png",
+            jawaban: ["3"],
+            penjelasan: {
+              text: "Pohon diatas memiliki 3 tingkat yang dimulai dari 0.",
+            },
+          },
+          {
+            soal: "Berapa ketinggian dari pohon tersebut?",
+            gambarSoal: "../gambar/soal_tinggi2.png",
+            jawaban: ["2"],
+            penjelasan: {
+              text: "Pohon diatas memiliki 2 tingkat yang dimulai dari 0.",
+            },
+          },
         ],
       };
 
       let currentTopic = null;
+
+      function generateInputFields(count) {
+        return Array(count)
+          .fill(0)
+          .map(
+            (_, i) => `
+          <div class="answer-input">
+            <label>Jawaban ${i + 1}:</label>
+            <input type="text" class="answer-field">
+          </div>
+        `
+          )
+          .join("");
+      }
+
+      function checkAnswer(answers, userInputs) {
+        // Convert both arrays to lowercase and sort them
+            const sortedAnswers = answers.map(a => a.toLowerCase()).sort();
+        const sortedInputs = userInputs.map(i => i.toLowerCase()).sort();
+  
+    // Compare the sorted arrays
+         return sortedAnswers.length === sortedInputs.length && 
+         sortedAnswers.every((val, index) => val === sortedInputs[index]);
+}
 
       function showContent(topic) {
         currentTopic = topic;
@@ -379,22 +964,69 @@
         const materiDiv = document.getElementById("materiContent");
         const soalDiv = document.getElementById("soalContent");
 
-        // Show dropdown container
-        dropdownContainer.style.display = "flex";
+        // Update active state for topic cards
+        document.querySelectorAll(".topic-card").forEach((card) => {
+          card.classList.remove("active");
+          if (card.dataset.topic === topic) {
+            card.classList.add("active");
+          }
+        });
 
-        // Update content
+        dropdownContainer.style.display = "flex";
         materiDiv.innerHTML = materiContent[topic];
 
+        // Generate soal content with input fields and question image
         soalDiv.innerHTML = soalContent[topic]
           .map(
-            (soal, index) => `
-            <div class="soal-item">
-                <strong>Soal ${index + 1}:</strong>
-                <p>${soal}</p>
+            (soalItem, soalIndex) => `
+          <div class="soal-item" id="soal-${soalIndex}">
+            <img src="${soalItem.gambarSoal}" alt="Soal ${
+              soalIndex + 1
+            }" class="soal-image">
+            <strong>${soalItem.soal}</strong>
+            <div class="answer-container">
+              ${generateInputFields(soalItem.jawaban.length)}
             </div>
+            <button class="check-button" onclick="checkSoal(${soalIndex}, '${topic}')">
+              Check Jawaban
+            </button>
+            <div class="explanation" style="display: none;">
+              <p class="result-text"></p>
+              <div class="correct-answer"></div>
+              <p class="explanation-text">${soalItem.penjelasan.text}</p>
+              ${soalItem.penjelasan.gambar ? `<img src="${soalItem.penjelasan.gambar}" alt="Penjelasan" class="explanation-image">` : ''}
+            </div>
+          </div>
         `
           )
           .join("");
+      }
+
+      function checkSoal(soalIndex, topic) {
+        const soalContainer = document.getElementById(`soal-${soalIndex}`);
+        const inputs = Array.from(
+          soalContainer.querySelectorAll(".answer-field")
+        ).map((input) => input.value);
+        const correctAnswers = soalContent[topic][soalIndex].jawaban;
+        const explanation = soalContainer.querySelector(".explanation");
+        const resultText = explanation.querySelector(".result-text");
+        const correctAnswerDiv = explanation.querySelector(".correct-answer");
+
+        const isCorrect = checkAnswer(correctAnswers, inputs);
+
+        resultText.textContent = isCorrect
+          ? "Jawaban Benar! 🎉"
+          : "Jawaban Salah ❌";
+        resultText.style.color = isCorrect ? "#28a745" : "#dc3545";
+
+        correctAnswerDiv.innerHTML = `
+          <p>Jawaban yang benar:</p>
+          <ul>
+            ${correctAnswers.map((ans) => `<li>${ans}</li>`).join("")}
+          </ul>
+        `;
+
+        explanation.style.display = "block";
       }
 
       function toggleDropdown(type) {
@@ -408,42 +1040,7 @@
         dropdownContainer.style.display = "none";
       });
 
-      // First, load YouTube API
-      var tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName("script")[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      // Create YouTube player variable
-      var player;
-
-      // Initialize player when API is ready
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player("youtubePlayer", {
-          events: {
-            onReady: onPlayerReady,
-            onStateChange: onPlayerStateChange,
-          },
-        });
-      }
-
-      function onPlayerReady(event) {
-        console.log("Player is ready");
-      }
-
-      function onPlayerStateChange(event) {
-        console.log("Player state changed");
-      }
-
-      function seekTo(seconds) {
-        if (player && typeof player.seekTo === "function") {
-          console.log("Seeking to:", seconds);
-          player.seekTo(seconds);
-          player.playVideo();
-        } else {
-          console.error("Player not ready or seekTo not available");
-        }
-      }
+     
     </script>
     <script>
       document

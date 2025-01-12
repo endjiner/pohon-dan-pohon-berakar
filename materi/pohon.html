@@ -1,194 +1,769 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Video Pembelajaran</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
-        body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            background-image: 
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><pattern id="batik" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M25 0 L0 25 L25 50 L50 25 Z" fill="rgba(44, 62, 128, 0.05)"/></pattern><rect width="100%" height="100%" fill="url(%23batik)"/></svg>');
-            color: #333;
-        }
+      body {
+        font-family: "Montserrat", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><pattern id="batik" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M25 0 L0 25 L25 50 L50 25 Z" fill="rgba(44, 62, 128, 0.05)"/></pattern><rect width="100%" height="100%" fill="url(%23batik)"/></svg>');
+        color: #333;
+      }
 
-         /* Navbar */
-         .navbar {
-            position: relative;
-            background-color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px 50px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-        }
-        .nav-brand {
-            color: #2c3e80;
-            font-weight: 900;
-            font-size: 2em;
-            margin-right: 50px;
-            letter-spacing: -1px;
-        }
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-        .nav-link {
-            color: #2c3e80;
-            text-decoration: none;
-            position: relative;
-            padding: 10px 15px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            background-color: #f0f8ff;
-        }
-        .nav-link:hover {
-            background-color: #e6f2ff;
-            color: #1a5f7a;
-            transform: scale(1.05);
-        }
-        .nav-link.active {
-            background-color: #2c3e80;
-            color: white;
-        }
-        .dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: white;
-            width: 400px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            z-index: 20;
-            padding: 10px;
-        }
-        .nav-link .dropdown.show {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .dropdown a {
-            flex: 1 1 calc(50% - 10px);
-            box-sizing: border-box;
-            display: block;
-            padding: 10px 15px;
-            text-decoration: none;
-            color: #2c3e80;
-            background-color: #f0f8ff;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        .dropdown a:hover {
-            color: #1a5f7a;
-            background-color: #9bcbfd;
-            transform: translateX(10px);
-        }
+      /* Navbar */
+      .navbar {
+        position: relative;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 50px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+      .nav-brand {
+        color: #2c3e80;
+        font-weight: 900;
+        font-size: 2.5em;
+        margin-right: 490px;
+        letter-spacing: -1px;
+      }
+      .nav-menu {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+      }
+      .nav-link {
+        color: #2c3e80;
+        text-decoration: none;
+        position: relative;
+        padding: 10px 15px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background-color: #f0f8ff;
+      }
+      .nav-link:hover {
+        background-color: #e6f2ff;
+        color: #1a5f7a;
+        transform: scale(1.05);
+      }
+      .nav-link.active {
+        background-color: #2c3e80;
+        color: white;
+      }
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        width: 400px; /* Lebar dropdown */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        z-index: 20;
+        padding: 10px; /* Ruang dalam dropdown */
+      }
+      .nav-link .dropdown.show {
+        display: flex; /* Menggunakan flexbox */
+        flex-wrap: wrap; /* Bungkus ke baris baru */
+        gap: 10px; /* Jarak antar elemen */
+      }
+      .dropdown a {
+        flex: 1 1 calc(50% - 10px); /* Dua kolom dengan jarak 10px */
+        box-sizing: border-box; /* Agar padding tidak mempengaruhi ukuran */
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #2c3e80;
+        background-color: #f0f8ff;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+      .dropdown a:hover {
+        color: #1a5f7a;
+        background-color: #9bcbfd;
+        transform: translateX(10px);
+      }
 
-        /* Main Section */
-        .content {
-            max-width: 1200px;
-            margin: 20px auto;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
+      /* Sub-dropdown positioning */
+      .nav-link .dropdown .nav-link {
+        position: relative;
+      }
 
-        .video-section {
-            display: flex;
-            gap: 30px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            padding: 20px;
-        }
-        .video-container {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 8px;
-        }
+      /* Main Section */
+      .content {
+        overflow: visible;
+        max-width: 1200px;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
 
-        /* Footer */
-        .footer {
-            background-color: #2c3e80;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            width: 100%;
-        }
+      .video-section {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        padding: 20px;
+      }
+      .video-container {
+        position: relative;
+      }
+      video {
+        width: 100%;
+        border-radius: 8px;
+        outline: none;
+      }
+
+      .timestamps {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .timestamp {
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f0f8ff;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .timestamp:hover {
+        background-color: #e6f2ff;
+        color: #1a5f7a;
+        transform: scale(1.05);
+      }
+
+      .timestamp-container {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .timestamp-item {
+        padding: 10px;
+        margin: 5px 0;
+        background: #f0f8ff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .timestamp-item:hover {
+        background: #e6f2ff;
+        transform: translateX(5px);
+      }
+
+
+
+      .dropdown-container {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .dropdown-button {
+        width: 100%;
+        padding: 15px;
+        background: #f0f8ff;
+        border: none;
+        border-radius: 8px;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 20px;
+      }
+
+      .dropdown-content {
+        display: none;
+        padding: 15px;
+        background: white;
+        border-radius: 8px;
+        margin-top: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .dropdown-content.active {
+        display: block;
+      }
+
+      .soal-item {
+        margin: 15px 0;
+        padding: 15px;
+        background: #f0f8ff;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: #2c3e80;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        width: 100%;
+      }
+
+      .answer-container {
+        margin: 15px 0;
+      }
+
+      .answer-input {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .answer-field {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      .check-button {
+        background: #2c3e80;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .check-button:hover {
+        background: #1a5f7a;
+      }
+
+      .explanation {
+        margin-top: 15px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 5px;
+      }
+
+      .explanation-image {
+        max-width: 100%;
+        margin-top: 10px;
+        border-radius: 5px;
+      }
+
+      .result-text {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .soal-image {
+        max-width: 50%;
+        height: auto;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .materi-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .options-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin: 15px 0;
+      }
+
+      .option-box {
+        border: 2px solid transparent;
+        background-color: #f0f8ff;
+        color: #2c3e80;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .option-box img {
+        width: 150px;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .option-box:hover,
+      .option-box.selected {
+        background-color: #2c3e80;
+        color: white;
+      }
+
+      .option-box.correct {
+        border-color: rgb(0, 255, 0);
+      }
+
+      .option-box.incorrect {
+        border-color: red;
+      }
+      .green{
+        color: #1dee0a;
+      
+      }
+      .blue{
+        color: #1a46e6;
+
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="nav-brand">Pohon dan Pohon Berakar</div>
-        <div class="nav-menu">
-            <a href="/index.html" class="nav-link active">Beranda</a>
-    
-            <div class="nav-link nav-dropdown">
-              Video Pembelajaran
-              <div class="dropdown">
-                <a href="pohon.html">Pohon</a>
-                <a href="hutan.html">Hutan</a>
-                <a href="pohon berakar.html">Pohon Berakar</a>
-                <a href="anak dan orang tua.html">Anak Dan Orang Tua</a>
-                <a href="lintasan.html">Lintasan</a>
-                <a href="keturunan dan leluhur.html">Keturunan dan Leluhur</a>
-                <a href="saudara kandung.html">Saudara Kandung</a>
-                <a href="sub pohon.html">Subpohon</a>
-                <a href="derajat.html">Derajat</a>
-                <a href="daun.html">Daun</a>
-                <a href="simpul dalam.html">Simpul Dalam</a>
-                <a href="aras atau tingkat.html">Aras/Tingkat</a>
-                <a href="tinggi dan kedalaman.html">Tinggi/Kedalaman</a>
-              </div>
-            </div>
-    
-            <!-- Tambahan Menu Baru -->
-            <a href="../quiz/Evaluasi.html" class="nav-link">Evaluasi</a>
-            <a href="../kalkulator/kalkulator.html" class="nav-link">Kalkulator</a>
-          </div>
+        <div class="nav-brand"><span class="green">Po</span><span class="blue">Kar</span></div>
+      <div class="nav-menu">
+        <a href="../index.html" class="nav-link ">Beranda</a>
+
+        <a href="video.html" class="nav-link active">Materi</a>
+
+        <!-- Tambahan Menu Baru -->
+        <a href="../quiz/Evaluasi.html" class="nav-link">Evaluasi</a>
+        <a href="../kalkulator/kalkulator.html" class="nav-link">Kalkulator</a>
+      </div>
     </nav>
 
     <!-- Main Content -->
     <div class="content">
-        <div class="video-section">
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/aeRiCmwUYSM?si=We2yqeLpLi9J_TV4" allowfullscreen></iframe>
-            </div>
+      <div class="video-section">
+        <div class="video-container">
+          <iframe
+            id="youtubePlayer"
+            width="100%"
+            height="400"
+            src="https://www.youtube.com/embed/oYhJyPAjbEI?enablejsapi=1"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
         </div>
+        <div class="timestamp-container">
+          <h3 style="text-align: center;">Pohon</h3>
+          <div class="timestamp-item" onclick="seekTo(18)">Definisi dan Syarat Pohon</div>
+          <div class="timestamp-item" onclick="seekTo(315)">Karakteristik Pohon</div>
+          <div class="timestamp-item" onclick="seekTo(605)">Jenis Pohon</div>
+          <div class="timestamp-item" onclick="seekTo(672)">Jenis Titik Pohon</div>
+          <div class="timestamp-item" onclick="seekTo(841)">Hutan</div>
+          <div class="timestamp-item" onclick="seekTo(1007)">Pohon Keputusan</div>
+        </div>
+      </div>
+
+      <div
+        class="dropdown-container"
+        style="display: flex"
+        id="dropdownContainer"
+      >
+        <div style="flex: 1">
+          <button class="dropdown-button" onclick="toggleDropdown('materi')">
+            📚 Materi
+            <span>▼</span>
+          </button>
+          <div id="materiContent" class="dropdown-content"></div>
+        </div>
+
+        <div style="flex: 1">
+          <button class="dropdown-button" onclick="toggleDropdown('soal')">
+            📝 Soal
+            <span>▼</span>
+          </button>
+          <div id="soalContent" class="dropdown-content"></div>
+        </div>
+      </div>
     </div>
 
     <!-- Footer -->
-    <footer class="footer"> 
-        Kelompok 9 Matematika Diskrit 1 TRPL B<br>
-        Anggota:<br>
-        Aura Aulia Putrina Ashari (1062437)<br>
-        Maudy Apriliyani (1062446)<br>
-        Nasywatun Fadhilah (1062452)
+    <footer class="footer">
+      Kelompok 9 Matematika Diskrit 1 TRPL B<br />
+      Anggota:<br />
+      Aura Aulia Putrina Ashari (1062437)<br />
+      Maudy Apriliyani (1062446)<br />
+      Nasywatun Fadhilah (1062452)
     </footer>
 
     <!-- JavaScript -->
     <script>
-        document
-          .querySelector(".nav-dropdown")
-          .addEventListener("click", function (e) {
-            // Toggle the dropdown menu
-            this.querySelector(".dropdown")?.classList.toggle("show");
+        let player;
+      
+        function onYouTubeIframeAPIReady() {
+          player = new YT.Player('youtubePlayer', {
+            events: {
+              'onReady': onPlayerReady,
+            }
           });
+        }
+      
+        function onPlayerReady(event) {
+          console.log('YouTube player is ready');
+        }
+      
+        function seekTo(seconds) {
+          if (player && typeof player.seekTo === 'function') {
+            player.seekTo(seconds, true);
+          } else {
+            console.error('Player not ready or seekTo not available');
+          }
+        }
       </script>
-</body>
+      
+      <script src="https://www.youtube.com/iframe_api"></script>
+      
+    <script>
+      const materiContent = {
+        pohon: `
+<div class="materi-item">
+    <h3 style="text-align: center;">Pohon</h3>
+    <div>
+        <h4 style="text-align: center;">Definisi</h4>
+        <p>Pohon (tree) adalah merupakan graf yang tak berarah terhubung yang tidak memuat sirkuit sederhana. Diagram pohon dapat digunakan sebagai alat untuk memecahkan masalah dengan menggambarkan semua alternatif pemecahan.</p>
+    </div>
+    <div>
+        <h4 style="text-align: center;">Syarat</h4>
+        <div class="point-penting">
+            <ul>
+                <li>Graph tersebut tidak mempunyai lingkar (cycle free) dan banyaknya rusuk (n-1).</li>
+                <li>Graph tersebut terhubung. Berikut contohnya.</li>
+            </ul>
+             <img src="../gambar/materi_pohon1.png" alt="Pohon Berakar2" class="materi-image">
+        </div>
+    </div>
+    <div>
+        <h4 style="text-align: center;">Karakteristik</h4>
+        <p>Misalkan G = (V; E) adalah graf tak berarah sederhana, maka setiap pernyataan berikut ekuivalen:</p>
+        <div class="point-penting">
+            <ul>
+                <li>G adalah pohon,</li>
+                <li>Setiap pasang simpul u; v 2 V di G terhubung oleh sebuah lintasan sederhana yang unik (tunggal),</li>
+                <li>G terhubung dan memenuhi |E| = |V| - 1,</li>
+                <li>G tidak memiliki sirkuit sederhana dan memenuhi |E| = |V| - 1,</li>
+                <li>G tidak memiliki sirkuit sederhana dan penambahan sembarang sisi pada G menyebabkan G memiliki tepat satu sirkuit sederhana, setiap sisi pada G adalah jembatan.</li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <h4 style="text-align: center;">Jenis Pohon</h4>
+        <div>
+            <h5>Pohon Kosong (Empty Tree)</h5>
+            <p><strong>Definisi:</strong> Pohon kosong adalah pohon yang tidak memiliki simpul (node) sama sekali.</p>
+            <p><strong>Karakteristik:</strong></p>
+            <ul>
+                <li>Tidak ada simpul akar (root).</li>
+                <li>Tidak ada simpul anak, daun, atau cabang.</li>
+                <li>Ukurannya adalah 0, karena tidak memiliki elemen.</li>
+            </ul>
+            <p><strong>Contoh:</strong></p>
+            <ul>
+                <li>Pohon kosong sering digunakan untuk merepresentasikan kondisi awal sebelum elemen ditambahkan ke dalam struktur pohon.</li>
+                <li>Dalam algoritma rekursif, pohon kosong biasanya digunakan sebagai kasus dasar (base case).</li>
+            </ul>
+        </div>
+        <div>
+            <h5>Pohon Semu (Degenerate Tree / Semi-Pohon)</h5>
+            <p><strong>Definisi:</strong> Pohon semu adalah pohon yang semua simpulnya hanya memiliki satu anak, baik itu anak kiri atau anak kanan.</p>
+            <p><strong>Karakteristik:</strong></p>
+            <ul>
+                <li>Struktur pohon semu menyerupai daftar berantai (linked list).</li>
+                <li>Kedalaman pohon (depth) sama dengan jumlah simpul dalam pohon.</li>
+                <li>Tidak efisien dalam operasi seperti pencarian atau penambahan simpul, karena menyerupai traversal pada daftar linear.</li>
+            </ul>
+            <p><strong>Contoh:</strong></p>
+            <ul>
+                <li>Pohon semu sering terjadi ketika data dimasukkan secara terurut (ascending atau descending) ke dalam pohon biner tanpa mekanisme penyeimbangan seperti dalam pohon AVL.</li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <h4 style="text-align: center;">Jenis Titik Pohon</h4>
+        <ul>
+            <li><strong>Simpul Daun (Leaf Node):</strong> Titik yang tidak memiliki anak, berada di ujung pohon.</li>
+            <li><strong>Simpul Internal (Internal Node):</strong> Titik yang memiliki anak, bukan daun.</li>
+        </ul>
+    </div>
+    <div>
+        <h4 style="text-align: center;">Hutan</h4>
+        <p>Hutan (forest) adalah graf tak berarah yang tidak memiliki sirkuit sederhana. Hutan dapat memuat beberapa pohon. Berikut contoh hutan.</p>
+         <img src="../gambar/materi_pohon2.png" alt="Pohon Berakar2" class="materi-image">
+    </div>
+    <div>
+        <h3 style="text-align: center;">Pohon Keputusan</h3>
+    <p class="materi-explanation">
+        Pohon Keputusan (Decision Tree) adalah model grafis untuk membuat keputusan berdasarkan serangkaian pertanyaan atau kondisi. Berikut ringkasan elemen dan prosesnya:
+    </p>
+    <div class="point-penting">
+        <ul>
+            <li>Akar (Root): Titik awal yang mewakili keputusan pertama.</li>
+            <li>Simpul Keputusan (Decision Node): Titik untuk membuat keputusan berdasarkan kondisi.</li>
+            <li>Simpul Hasil (Leaf Node): Titik yang menunjukkan keputusan akhir.</li>
+            <li>Tepi (Edge): Menghubungkan simpul, mewakili hasil keputusan.</li>
+        </ul>
+    </div>
+    </div>
+</div>
+
+        `,
+      };
+
+      const soalContent = {
+        pohon: [
+          {
+            type: 1, // Image selection type
+            soal: "Pilih gambar yang merupakan pohon yang valid:",
+            options: [
+              "../gambar/jawaban1.png",
+              "../gambar/jawaban2.png",
+              "../gambar/jawaban3.png",
+              "../gambar/jawaban4.png"
+            ],
+            jawaban: ["jawaban1.png", "jawaban2.png"],
+            jawabanLabels: {
+        "jawaban1.png": "G1",
+        "jawaban2.png": "G2",
+        "jawaban3.png": "G3",
+        "jawaban4.png": "G4"
+      },
+            penjelasan: {
+              text: "Graf G1 dan G2 adalah pohon, karena terhubung dan tidak memiliki sirkuit sederhana. Graf G3 bukan pohon karena memiliki sirkuit a; b; e; d; a. Graf G4 bukan pohon karena tidak terhubung, simpul a tidak terhubung dengan simpul c.",
+            }
+          },
+          {
+            type: 1, // Image selection type
+            soal: "Pilih gambar yang merupakan bukan pohon:",
+            options: [
+              "../gambar/jawaban1.1.png",
+              "../gambar/jawaban2.2.png",
+              "../gambar/jawaban3.3.png",
+              "../gambar/jawaban4.4.png"
+            ],
+            jawaban: ["jawaban3.3.png", "jawaban4.4.png"],
+            jawabanLabels: {
+        "jawaban1.1.png": "1",
+        "jawaban2.2.png": "2",
+        "jawaban3.3.png": "3",
+        "jawaban4.4.png": "4"
+      },
+            penjelasan: {
+              text: "Graf 2 dan 3 bukan merupakan pohon karena memiliki sirkuit sederhana seperti a ke b dan a ke f, dan pada graf 3 yaitu a ke b, a ke d, dan a ke f. Graf 1 dan 4 adalah pohon, karena terhubung dan tidak memiliki sirkuit sederhana.",
+            }
+          },
+          {
+            type: 2, // Text input type (existing)
+            soal: "tentukan mana yang titik cabang?",
+            gambarSoal: "../gambar/soal_pohon3.png",
+            jawaban: ["D","B"],
+            penjelasan: {
+              text: "Titik cabang adalah simpul yang memiliki lebih dari satu anak. Titik d memiliki 2 anak yaitu b dan a dan titik b memiliki 2 anak yaitu c dan d."
+            }
+          },
+          {
+            type: 2, // Text input type (existing)
+            soal: "Tentukan mana yang hutan?",
+            gambarSoal: "../gambar/soal_pohon5.png",
+            jawaban: ["H","I","J","F","C","G"],
+            penjelasan: {
+              text: "Daun adalah simpul yang berderajat nol (simpul yang tidak memiliki anak). Simpul a, b, e, d memiliki anak dibawahnya."
+            }
+          },
+          {
+            type: 2, // Text input type (existing)
+            soal: "Simpul mana yang merupakan akar?",
+            gambarSoal: "../gambar/soal_pohon4.png",
+            jawaban: ["2"],
+            penjelasan: {
+              text: "Gambar 1 merupakan pohon karena terhubung dan tidak memiliki sirkuit, sedangkan gambar 2 merupakan hutan karena tidak terhubung dan tidak terhubung."
+            }
+          },
+        ]
+      };
+
+      let currentTopic = null;
+
+      function generateInputFields(count) {
+        return Array(count)
+          .fill(0)
+          .map(
+            (_, i) => `
+          <div class="answer-input">
+            <label>Jawaban ${i + 1}:</label>
+            <input type="text" class="answer-field">
+          </div>
+        `
+          )
+          .join("");
+      }
+
+      function checkAnswer(answers, userInputs) {
+        // Convert both arrays to lowercase and sort them
+            const sortedAnswers = answers.map(a => a.toLowerCase()).sort();
+        const sortedInputs = userInputs.map(i => i.toLowerCase()).sort();
+  
+    // Compare the sorted arrays
+         return sortedAnswers.length === sortedInputs.length && 
+         sortedAnswers.every((val, index) => val === sortedInputs[index]);
+}
+
+      function showContent(topic) {
+        currentTopic = topic;
+        const dropdownContainer = document.getElementById("dropdownContainer");
+        const materiDiv = document.getElementById("materiContent");
+        const soalDiv = document.getElementById("soalContent");
+
+        dropdownContainer.style.display = "flex";
+        materiDiv.innerHTML = materiContent[topic];
+
+        soalDiv.innerHTML = soalContent[topic]
+          .map((soalItem, soalIndex) => {
+            if (soalItem.type === 1) {
+              // Image selection type
+              return `
+                <div class="soal-item" id="soal-${soalIndex}">
+                  <strong>${soalItem.soal}</strong>
+                  <div class="options-container">
+                    ${soalItem.options.map(imgSrc => {
+                      const filename = imgSrc.split('/').pop();
+                      return `
+                        <div class="option-box" data-image="${filename}">
+                          <img src="${imgSrc}" alt="Option">
+                          <div class="image-label">${soalItem.jawabanLabels[filename]}</div>
+                        </div>
+                      `;
+                    }).join('')}
+                  </div>
+                  <button class="check-button" onclick="checkSoal(${soalIndex}, '${topic}')">
+                    Check Jawaban
+                  </button>
+                  <div class="explanation" style="display: none;">
+                    <p class="result-text"></p>
+                    <div class="correct-answer"></div>
+                    <p class="explanation-text">${soalItem.penjelasan.text}</p>
+                    ${soalItem.penjelasan.gambar ? `<img src="${soalItem.penjelasan.gambar}" alt="Penjelasan" class="explanation-image">` : ''}
+                  </div>
+                </div>
+              `;
+            } else {
+              // Text input type (existing)
+              return `
+                <div class="soal-item" id="soal-${soalIndex}">
+                  <img src="${soalItem.gambarSoal}" alt="Soal ${soalIndex + 1}" class="soal-image">
+                  <strong>${soalItem.soal}</strong>
+                  <div class="answer-container">
+                    ${generateInputFields(soalItem.jawaban.length)}
+                  </div>
+                  <button class="check-button" onclick="checkSoal(${soalIndex}, '${topic}')">
+                    Check Jawaban
+                  </button>
+                  <div class="explanation" style="display: none;">
+                    <p class="result-text"></p>
+                    <div class="correct-answer"></div>
+                    <p class="explanation-text">${soalItem.penjelasan.text}</p>
+                  </div>
+                </div>
+              `;
+            }
+          })
+          .join("");
+
+        // Add click handlers for option boxes
+        document.querySelectorAll('.option-box').forEach(box => {
+          box.addEventListener('click', () => {
+            box.classList.toggle('selected');
+          });
+        });
+      }
+
+      function checkSoal(soalIndex, topic) {
+        const soalContainer = document.getElementById(`soal-${soalIndex}`);
+        const soalItem = soalContent[topic][soalIndex];
+        const explanation = soalContainer.querySelector(".explanation");
+        const resultText = explanation.querySelector(".result-text");
+        const correctAnswerDiv = explanation.querySelector(".correct-answer");
+
+        let isCorrect;
+        if (soalItem.type === 1) {
+          // Image selection type
+          const selectedImages = Array.from(soalContainer.querySelectorAll('.option-box.selected'))
+            .map(box => box.dataset.image);
+          isCorrect = arraysEqual(soalItem.jawaban.sort(), selectedImages.sort());
+          correctAnswerDiv.innerHTML = `
+      <p>Jawaban yang benar:</p>
+      <ul>
+        ${soalItem.jawaban.map(ans => `<li>${soalItem.jawabanLabels[ans]}</li>`).join("")}
+      </ul>
+    `;
+        } else {
+          // Text input type
+          const inputs = Array.from(soalContainer.querySelectorAll(".answer-field"))
+            .map(input => input.value);
+          isCorrect = checkAnswer(soalItem.jawaban, inputs);
+          correctAnswerDiv.innerHTML = `
+          <p>Jawaban yang benar:</p>
+          <ul>
+            ${soalItem.jawaban.map(ans => `<li>${ans}</li>`).join("")}
+          </ul>
+        `;
+        }
+
+        resultText.textContent = isCorrect ? "Jawaban Benar! 🎉" : "Jawaban Salah ❌";
+        resultText.style.color = isCorrect ? "#28a745" : "#dc3545";
+
+
+
+        explanation.style.display = "block";
+      }
+
+      function toggleDropdown(type) {
+        const content = document.getElementById(`${type}Content`);
+        content.classList.toggle("active");
+      }
+
+      // Add this to ensure dropdowns are hidden initially
+      document.addEventListener("DOMContentLoaded", () => {
+        // Show pohon content immediately
+        showContent('pohon');
+      });
+
+
+
+
+
+      // Helper function to compare arrays
+      function arraysEqual(arr1, arr2) {
+        // Convert both arrays to lowercase and sort them
+        const sorted1 = arr1.map(a => a.toLowerCase()).sort();
+        const sorted2 = arr2.map(a => a.toLowerCase()).sort();
+        
+        return sorted1.length === sorted2.length && 
+               sorted1.every((val, index) => val === sorted2[index]);
+      }
+    </script>
+    <script>
+      document
+        .querySelector(".nav-dropdown")
+        .addEventListener("click", function (e) {
+          // Toggle the dropdown menu
+          this.querySelector(".dropdown")?.classList.toggle("show");
+        });
+    </script>
+  </body>
 </html>
